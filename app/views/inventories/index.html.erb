@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+
+<h1>Bob's Listings:</h1>
+<%= link_to 'New Inventory', new_inventory_path, class: "btn btn-warning" %>
+
+
+
+<div class="row">
+    <% @inventories.each do |inventory| %>
+      <div class="col-md-4">
+       <div class="panel panel-default">
+        <div class="panel-body">
+         <h2><%= inventory.make %></h2>
+         <h3>Mileage: <%= inventory.mileage %></h3>
+         <p>Description: <%= inventory.description %></p>
+         <%= image_tag inventory.avatar.url(:medium), class: "img-responsive" %>
+         <p>$ <%= inventory.price %></p>
+
+
+         <div class="btn-group">
+          <%= link_to 'Show', inventory, class: "btn btn-primary" %>
+          <%= link_to 'Edit', edit_inventory_path(inventory), class: "btn btn-warning" %>
+          <%= link_to 'Destroy', inventory, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+         </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
